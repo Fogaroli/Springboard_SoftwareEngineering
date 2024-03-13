@@ -1,0 +1,40 @@
+body {
+    background-color: lightblue;
+}
+
+h1 {
+    color: green;
+}
+
+.class_one{
+    color: blue;
+}
+
+#id_one {
+    color:orange;
+}
+
+
+
+/* Important properties to keep track
+background-color
+color
+text-decoration
+font-size
+fint-family
+font-weight
+padding
+padding-top
+border: size, style, color
+border-radius
+
+Shorthand properties
+where the parameters goes sequentially, like the border above
+
+Positioning
+    static - mantain the flow of the rendering
+    fixed - Fixe on the html frame and is not affected by scrolling
+    relative - Similar to static but you can se objects relative to itself or to other relative objects
+    absolute - It becomes absolute compared to a relative parant (if no relative it goes back to the html frame. But his one scrolls with the other objects.
+
+*/
