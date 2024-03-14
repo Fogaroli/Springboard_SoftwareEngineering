@@ -1,0 +1,35 @@
+1. What does the man command do? Type in man rm. How do you scroll and get out?
+    - Man commands shows on the terminal the manual for that command, with usage and flags. Scroll using the arrow or enter key and "q" to exit.
+
+2. Look at the man page for ls. What does the -l flag do? What does the -a flag do?
+    - "-l" flag is used for showing content in list format
+      "-a" flag is used to show all files (include ones starting with .)
+
+3. How do you jump between words in the terminal?
+    Shotcuts to move between words are Ctrl + Arrow keys
+
+4. How do you get to the end of a line in terminal?
+    Shortcut for end of the line is Ctrl + e
+
+5. How do you move your cursor to the beginning in terminal?
+    Shortcut for beginning of the line is Ctrl + a
+
+6. How do you delete a word (without pressing backspace multiple times) in terminal?
+    Shortcut to delete a work is Ctrl + W, it will delete the work up to where the cursor is located. To delete the entire work make sure the cursos is in the very end.
+
+7. What is the difference between a terminal and shell?
+    Terminal is the interface where commands can be used, shell is the actual application that will process the commands and interact with the kernel.
+
+8. What is an absolute path?
+    The absolute path indicates the location of a file or folder starting from teh root directory
+
+9. What is an relative path?
+    Relative path indicates the location of a file compared to the current location where the cursor is in the terminal.
+
+10. What is a flag? Give three examples of flags you have used.
+    Flags are options or parameters passed to the commands in the terminal. Exemples are "ls -a" to show hiddle files, "rm -r" to delete a folder recursively, which included the folder content,
+    and "ls --help" to print on teh terminal a manual of the command (ls in this case).
+
+11. What do the r and f flags do with the rm command?
+    The command rm is used to remove a file or directory, -r is used to indicate recursive, which is used to delete a directory that has files in it, all files and subfolder will be also deleted.
+    f flag is used to "force" the operation and will skip confirmation prompts
