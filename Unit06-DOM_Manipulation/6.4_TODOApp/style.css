@@ -1,0 +1,8 @@
+.title{
+    text-align: center;
+}
+
+.doneItem{
+    text-decoration: line-through;
+    color: gray;
+}
