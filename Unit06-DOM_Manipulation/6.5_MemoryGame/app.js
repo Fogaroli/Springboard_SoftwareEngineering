@@ -55,15 +55,14 @@ function main(){
   flipped cards have a binary custom atribute se to true
   */
   function countInGame(){
-    let counter = 0
+    let counter = 0;
     for (let card of gameCards){
       if (card.dataset.in_game) {
-        counter++
+        counter++;
       }
     }
-    return counter
+    return counter;
   }
-
 
   /*
   This function reverts non-matching cards
@@ -76,7 +75,6 @@ function main(){
       }
     }
   }
-
 
   /*
   This function checks if all cards were flipped and call the end of the game
@@ -131,7 +129,6 @@ function main(){
     }
   }
   
-
   /*
   This function is execited once the user clicks on any of the cards.
   This function is executed in the callback of the event listener
@@ -143,8 +140,8 @@ function main(){
         if (!event.target.nextElementSibling.dataset.in_game && !event.target.nextElementSibling.dataset.scored){
         event.target.nextElementSibling.dataset.in_game = "true";
         event.target.parentElement.classList.add("flipped");
-        scoredPoints++
-        score.innerHTML = scoredPoints
+        scoredPoints++;
+        score.innerHTML = scoredPoints;
         }
       } catch (typeError) {
         // This error is expected because once the cards are flipped the target element becomes the card face, which does not have a nextElementSibling
@@ -155,6 +152,7 @@ function main(){
     }
   }
   
+  // Function to start the game
   function start (){
     if (!gameStart){
       for (let card of gameCards){
@@ -165,12 +163,12 @@ function main(){
           card.removeAttribute("data-cardType");
         }
       }
-      // let shuffledCards = shuffle(cardPairs);
-      // distributeCards(shuffledCards);
+      let shuffledCards = shuffle(cardPairs);
+      distributeCards(shuffledCards);
       scoredPoints = 0;
       distributeCards(cardPairs);
       gameStart = true;
-      startButton.style.color = "gray"
+      startButton.style.color = "gray";
       score.innerText = scoredPoints;
     }
   }
@@ -180,13 +178,13 @@ function main(){
       const recordValue = document.querySelector("#recordValue");
       recordValue.innerText = scoredPoints;
     } else {
-    let recValue = document.createElement("p");
-    recValue.innerText = localStorage.record;
-    recValue.id = "recordValue";
-    recValue.style.fontSize = "20px";
-    recValue.style.color = "red";
-    recordBox.appendChild(recValue);
-  } 
+      let recValue = document.createElement("p");
+      recValue.innerText = localStorage.record;
+      recValue.id = "recordValue";
+      recValue.style.fontSize = "20px";
+      recValue.style.color = "red";
+      recordBox.appendChild(recValue);
+    } 
   }
 
   // This is where the code starts running once DOM is loaded
