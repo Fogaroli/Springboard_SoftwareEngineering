@@ -20,7 +20,12 @@ Examples:
     hasAZero(1212121) // false
 */
 
-function hasAZero(num) {}
+function hasAZero(num) {
+    const num_array = [...num.toString()];
+    return num_array.some(function(number) {
+        return number === "0";
+    });
+}
 
 /*
 Write a function called hasOnlyOddNumbers which accepts an array and returns true if every single number in the array is odd. If any of the values in the array are not odd, the function should return false. 
@@ -30,7 +35,11 @@ Examples:
     hasOnlyOddNumbers([1,2,3,5,7]) // false
 */
 
-function hasOnlyOddNumbers(arr) {}
+function hasOnlyOddNumbers(arr) {
+    return arr.every(number => {
+        return number % 2 !== 0;
+    });
+}
 
 /*
 Write a function called hasNoDuplicates which accepts an array and returns true if there are no duplicate values (more than one element in the array that has the same value as another). If there are any duplicates, the function should return false.
@@ -40,7 +49,17 @@ Examples:
     hasNoDuplicates([1,2,3]) // true
 */
 
-function hasNoDuplicates(arr) {}
+function hasNoDuplicates(arr) {
+    const test_array = [];
+    return arr.every(function(number) {
+        if (test_array.includes(number)) {
+            return false;
+        } else {
+            test_array.push(number);
+            return true;
+        }
+    });
+}
 
 /*
 Write a function called hasCertainKey which accepts an array of objects and a key, and returns true if every single object in the array contains that key. Otherwise it should return false.
@@ -57,9 +76,14 @@ Examples:
     hasCertainKey(arr,'isCatOwner') // false
 */
 
-function hasCertainKey(arr, key) {}
+function hasCertainKey(arr, key) {
+    return arr.every(object => {
+        return key in object;
+    });
+}
 
 /*
+
 Write a function called hasCertainValue which accepts an array of objects and a key, and a value, and returns true if every single object in the array contains that value for the specific key. Otherwise it should return false.
 
 Examples:
@@ -75,4 +99,8 @@ Examples:
     
 */
 
-function hasCertainValue(arr, key, searchValue) {}
+function hasCertainValue(arr, key, searchValue) {
+    return arr.every(item => {
+        return item[key] === searchValue;
+    });
+}
