@@ -1,0 +1,124 @@
+body {
+    background-color: lightyellow;
+}
+
+h1 {
+    text-align: center;
+    text-decoration: double;
+}
+
+#header {
+    border: 1px solid black;
+    width: 620px;
+    margin: auto;
+}
+
+input {
+    width: 100px;
+    margin-top: 2px;
+    margin-bottom: 10px;
+}
+
+#start {
+    text-align: center;
+}
+
+#record {
+    text-align: center;
+    width: 100%;
+    border-spacing: 10px;
+}
+
+.gameboard {
+    width: 620px;
+    margin: auto;
+}
+
+.scene {
+    perspective: 240px;
+}
+
+.card {
+    position: relative;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+}
+
+.card-front {
+    border: 1px solid black;
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+    background-image: linear-gradient(green, darkgreen);
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
+}
+
+.cards {
+    border: 1px solid black;
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+    position: relative;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    background-size: 100%;
+}
+
+.card1 {
+    background-image: url("images/alien.jpg");
+}
+
+.card2 {
+    background-image: url("images/bee.jpg");
+}
+
+.card3 {
+    background-image: url("images/bird.jpg");
+}
+
+.card4 {
+    background-image: url("images/gorilla.jpg");
+}
+
+.card5 {
+    background-image: url("images/monster.jpg");
+}
+
+.card6 {
+    background-image: url("images/penguin.jpg");
+}
+
+.card7 {
+    background-image: url("images/robot.jpg");
+}
+
+.card8 {
+    background-image: url("images/sheep.jpg");
+}
+
+.card9 {
+    background-image: url("images/snake.jpg");
+}
+
+.card10 {
+    background-image: url("images/tiger.jpg");
+}
+
+.empty {
+    text-align: center;
+    width: 120px;
+    height: 120px;
+}
+
+.score {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin: 10px;
+    text-align: center;
+}
