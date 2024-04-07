@@ -1,0 +1,16 @@
+- What is the difference between ***var*** and ***let***?
+var is used to declare variables, var is scoped to the entire function, while let is block scoped. variables created with VAR cna be re-declared, while let does not allow such operation.
+
+- What is the difference between **var** and ***const***?
+var is scoped to the entire function while const is block scoped, additionally, variables declared with VAR can be modified and re-declared, whie const does not allow niether of the operations.
+
+
+- What is the difference between **let** and **const**?
+variables created with const cannot be modified. For reference items like array, object or function, it is possible to modify the content of the variable, but not the variable reference.
+
+
+- What is hoisting?
+hoinsting is the process in javascript to scan the code for variables before execution, which is only done with variables declared with VAR, let and const is not affected by this process.
+You can access the variable before it is declared, althoug the content will be undefined at that state.
+Function are also hoisted and be be accessed before its declaration.
+
