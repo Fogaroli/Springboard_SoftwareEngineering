@@ -1,0 +1,58 @@
+html {
+  width: 100%;
+  height: 100%;
+  border: 0px
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right,yellow, rgb(194, 126, 0));
+
+}
+
+.search-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+.search-container input,
+.search-container .suggestions {
+  width: 300px;
+}
+.search-container .placeholder {
+  height: 40%;
+  position: relative;
+}
+.search-container input {
+  height: 30px; 
+  border: 0;
+  border-bottom: 2px solid red;
+  position: relative;
+  background: rgba( 255, 255, 255, 0.2)
+}
+.search-container .suggestions {
+  height: 40%;
+  position: relative;
+}
+
+ul {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+ul li {
+  position: relative;
+  background: rgba( 255, 255, 255, 0.2)
+}
+
+ul li:hover {
+  background-color: rgb(185, 121, 0);
+}
