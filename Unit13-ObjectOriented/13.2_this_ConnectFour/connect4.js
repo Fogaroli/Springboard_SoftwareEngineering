@@ -148,68 +148,67 @@ class Game {
         // switch players
         this.currPlayer =
             this.currPlayer === this.player1 ? this.player2 : this.player1;
+    
     }
 
     /*
      * checkForWin: check board cell-by-cell for "does a win start here?"
      */
-    checkForWin() {
-        function _win(cells) {
-            // Check four cells to see if they're all color of current player
-            //  - cells: list of four (y, x) cells
-            //  - returns true if all are legal coordinates & all match currPlayer
-            return cells.every(
-                ([y, x]) =>
-                    y >= 0 &&
-                    y < this.height &&
-                    x >= 0 &&
-                    x < this.width &&
-                    this.board[y][x] === this.currPlayer
-            );
-        }
 
+
+    checkForWin() {
         for (let y = 0; y < this.height; y++) {
             for (let x = 0; x < this.width; x++) {
-                // get "check list" of 4 cells (starting here) for each of the different
-                // ways to win
-                const horiz = [
-                    [y, x],
-                    [y, x + 1],
-                    [y, x + 2],
-                    [y, x + 3],
-                ];
-                const vert = [
-                    [y, x],
-                    [y + 1, x],
-                    [y + 2, x],
-                    [y + 3, x],
-                ];
-                const diagDR = [
-                    [y, x],
-                    [y + 1, x + 1],
-                    [y + 2, x + 2],
-                    [y + 3, x + 3],
-                ];
-                const diagDL = [
-                    [y, x],
-                    [y + 1, x - 1],
-                    [y + 2, x - 2],
-                    [y + 3, x - 3],
-                ];
-
-                // find winner (only checking each win-possibility as needed)
-                if (
-                    _win.call(this, horiz) ||
-                    _win.call(this, vert) ||
-                    _win.call(this, diagDR) ||
-                    _win.call(this, diagDL)
-                ) {
+                if (this.checkCombinations(x,y)) {
                     this.running = false;
                     this.updateButton();
                     return true;
                 }
             }
         }
+    }
+
+    compareCells(cells) {
+        return cells.every(
+            ([y, x]) =>
+                y >= 0 &&
+                y < this.height &&
+                x >= 0 &&
+                x < this.width &&
+                this.board[y][x] === this.currPlayer
+        );
+    }
+
+    checkCombinations(x, y) {
+        const validCombinations = [
+            [
+                [y, x],
+                [y, x + 1],
+                [y, x + 2],
+                [y, x + 3],
+            ],
+            [
+                [y, x],
+                [y + 1, x],
+                [y + 2, x],
+                [y + 3, x],
+            ],
+            [
+                [y, x],
+                [y + 1, x + 1],
+                [y + 2, x + 2],
+                [y + 3, x + 3],
+            ],
+            [
+                [y, x],
+                [y + 1, x - 1],
+                [y + 2, x - 2],
+                [y + 3, x - 3],
+            ],
+        ];
+        return validCombinations.some((combination) =>
+            this.compareCells(combination)
+        );
     }
 }
 
