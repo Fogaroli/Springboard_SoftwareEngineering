@@ -88,23 +88,16 @@ const FRUIT = [
     "Yuzu",
 ];
 
+const suggestionBox = document.querySelector(".suggestions ul");
+const textInput = document.querySelector("#fruit")
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //feature functions
 
 //This functon seaches the array of known fruits for a partial string match on any location sof the string.
 // This function returns only the 10 first match
 function search(str) {
-    const results = [];
-    const allFruits = new Set(FRUIT);
-    for (let fruit of allFruits) {
-        if (fruit.toLowerCase().includes(str)) {
-            results.push(fruit);
-            if (results.length >= 15) {
-                return results;
-            }
-        }
-    }
-    return results;
+    return FRUIT.filter((fruit) => fruit.toLowerCase().includes(str));
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -131,7 +124,6 @@ function showSuggestions(results, inputVal) {
 
 //This function adds an LI element in the html with a suggestion result
 function addLi(content) {
-    const suggestionBox = document.querySelector(".suggestions ul");
     const newLi = document.createElement("LI");
     newLi.innerHTML = content;
     suggestionBox.appendChild(newLi);
@@ -139,10 +131,7 @@ function addLi(content) {
 
 //This functions clears the suggested items from a previous iteraction
 function clearSuggestions() {
-    const suggestedItems = document.querySelectorAll(".suggestions li");
-    if (suggestedItems !== null) {
-        suggestedItems.forEach((element) => element.remove());
-    }
+    suggestionBox.innerHTML = "";
 }
 
 //This function is triggered by the keyup event on teh serach input. Reads the string entered by user and pass to the search function:
@@ -155,13 +144,11 @@ function searchHandler(e) {
 
 //This function is triggered when user clikcs on a suggested item. Item should be used to fill search box
 function useSuggestion(e) {
-    const textInput = document.querySelector("#fruit");
     textInput.value = e.target.closest("LI").textContent;
     clearSuggestions();
 }
 
 function previewSuggestion(e) {
-    const textInput = document.querySelector("#fruit");
     if (e.target.closest("LI")) {
         textInput.value = e.target.closest("LI").textContent;
     }
@@ -171,12 +158,9 @@ function previewSuggestion(e) {
 //Main function called when the page is loaded on the browser
 //Add eventlistener to the each box and all child suggestions later populated
 function main() {
-    const textInput = document.querySelector("#fruit");
-    const suggestions = document.querySelector(".suggestions ul");
-
     textInput.addEventListener("keyup", searchHandler);
-    suggestions.addEventListener("click", useSuggestion);
-    suggestions.addEventListener("mouseover", previewSuggestion);
+    suggestionBox.addEventListener("click", useSuggestion);
+    suggestionBox.addEventListener("mouseover", previewSuggestion);
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
