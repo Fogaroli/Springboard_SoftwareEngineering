@@ -1,7 +1,7 @@
 /*
-Title: 
-Author: 
-Date: 
+Title: Giphy Party - AJAX Exercise
+Author: Fabricio Ribeiro
+Date: April 15, 2024
 */
 
 //Global variables
@@ -12,6 +12,7 @@ const GIFContainer = document.querySelector("#GIFResponse")
 //================================================================
 //Feature Functions
 
+//Function call when clicking on submit button
 submitButton.addEventListener("click", (e) => {
     e.preventDefault();
     const searchInput = document.querySelector("input");
@@ -19,11 +20,13 @@ submitButton.addEventListener("click", (e) => {
     searchInput.value = "";
 });
 
+//Function call when clicking on delete button
 deleteInput.addEventListener("click", (e) => {
     e.preventDefault();
     GIFContainer.innerHTML = "";
 });
 
+//function to process the user text input and query the giphy API interface for a related guf image URL.
 async function processGiphy(string) {
     const response = await axios.get("http://api.giphy.com/v1/gifs/search", {
         params: { q: string, api_key: "MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym" },
@@ -38,6 +41,7 @@ async function processGiphy(string) {
 //================================================================
 //DOM Manupulation Functions
 
+//Function to add a DIV element to the page with the gif image provided.
 function addGIF(gifaddress) {
     const newColumnItem = document.createElement("div");
     newColumnItem.classList.add("col-sm-6", "col-lg-4", "col-xl-3");
@@ -46,6 +50,7 @@ function addGIF(gifaddress) {
     GIFContainer.appendChild(newColumnItem);
 }
 
+//subfunction to create the IMG element with the fiven gif url.
 function buildImageDIV(gifaddress) {
     const GIFElement = document.createElement("img");
     GIFElement.src = gifaddress;
