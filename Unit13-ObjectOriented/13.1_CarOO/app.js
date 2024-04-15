@@ -50,12 +50,12 @@ class Garage {
         this.vehicles = [];
     }
 
+    isValidVehicle(vehicle) {
+        return !vehicle.make || !vehicle.model || !vehicle.year;
+    }
+
     add(vehicle) {
-        if (
-            vehicle.make === undefined ||
-            vehicle.model === undefined ||
-            vehicle.year === undefined
-        ) {
+        if (this.isValidVehicle(vehicle)) {
             return "Only vehicles are allowed in here!";
         }
         if (this.vehicles.length < this.size) {

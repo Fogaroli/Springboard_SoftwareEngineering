@@ -6,26 +6,31 @@ Date: April 7, 2024
 */
 
 describe("Section 1", function () {
+    let vehicle, car;
+
+    beforeEach(() => {
+        vehicle = new Vehicle("Honda", "Monster Truck", 1999);
+        car = new Car("Toyota", "Corolla", 2005)
+    })
+
+
     //test for Vehicle class
-    it('Class Vehicle Method honk - honk method should return "Beep"', function () {
-        let myFirstVehicle = new Vehicle("Honda", "Monster Truck", 1999);
-        expect(myFirstVehicle.honk()).toEqual("Beep.");
+    it('Class Vehicle Method honk - should return "Beep" when honk() is called', function () {
+        expect(vehicle.honk()).toEqual("Beep.");
     });
 
-    it("Class Vehicle Method toString - to string method should return phase content", function () {
-        let myFirstVehicle = new Vehicle("Honda", "Monster Truck", 1999);
-        expect(myFirstVehicle.toString()).toEqual(
+    it("Class Vehicle Method toString - should return phase content when toString() is called.", function () {
+        expect(vehicle.toString()).toEqual(
             "The vehicle is a Honda Monster Truck from 1999."
         );
     });
 
     it("Class Car- subclass of Vehicle with additional parameter numWheels set to 4", function () {
-        let myFirstCar = new Car("Toyota", "Corolla", 2005);
-        expect(myFirstCar.toString()).toEqual(
+        expect(car.toString()).toEqual(
             "The vehicle is a Toyota Corolla from 2005."
         );
-        expect(myFirstCar.honk()).toEqual("Beep.");
-        expect(myFirstCar.numWheels).toEqual(4);
+        expect(car.honk()).toEqual("Beep.");
+        expect(car.numWheels).toEqual(4);
     });
 
     it("Class Motorcycle- subclass of Vehicle with additional method revEngine should return Vroom", function () {
