@@ -57,7 +57,7 @@ function navUserProfileClick(evt) {
         .append(
             $("<i>", { class: "fa-solid fa-pen-to-square", id: "edit-name" })
         );
-    $("#password-input").remove()
+    $("#password-input").remove();
     $("#profile-username-label").text(`Username: ${currentUser.username}`);
     $("#profile-created-label").text(
         `Profile Created on: ${createdDate.toLocaleDateString()}`

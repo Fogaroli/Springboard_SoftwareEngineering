@@ -1,34 +1,34 @@
 /* Login and signup forms */
 
 .account-form button {
-  width: 4rem;
-  margin-left: 80px;
+    width: 4rem;
+    margin-left: 80px;
 }
 
 #signup-form button {
-  width: 8rem;
+    width: 8rem;
 }
 
 .account-forms-container {
-  padding-left: 20px;
+    padding-left: 20px;
 }
 
-#profile-form label{
-  width: auto;
-  font-size: 0.8rem;
+#profile-form label {
+    width: auto;
+    font-size: 0.8rem;
 }
 
-#profile-form i{
-  margin-left: 0.2rem;
+#profile-form i {
+    margin-left: 0.2rem;
 }
 
-#profile-form i:hover{
-  cursor: pointer;;
+#profile-form i:hover {
+    cursor: pointer;
 }
 
-.profile-input input{
-  margin: 0.4rem;
-  font-size: 0.8rem;
-  padding: 0.3rem;
-  width: 150px;
+.profile-input input {
+    margin: 0.4rem;
+    font-size: 0.8rem;
+    padding: 0.3rem;
+    width: 150px;
 }

@@ -8,7 +8,6 @@ let currentUser;
  */
 
 /** Handle login form submission. If login ok, sets up the user instance */
-
 async function login(evt) {
     console.debug("login", evt);
     evt.preventDefault();
@@ -36,7 +35,6 @@ async function login(evt) {
 $loginForm.on("submit", login);
 
 /** Handle signup form submission. */
-
 async function signup(evt) {
     console.debug("signup", evt);
     evt.preventDefault();
@@ -65,7 +63,6 @@ $signupForm.on("submit", signup);
  *
  * Adds a text input and a submit button to the page
  */
-
 function showUpdateNameInput(evt) {
     console.debug("showUpdateNameInput");
     $("#profile-name-label")
@@ -89,7 +86,6 @@ $profileForm.on("click", "i", showUpdateNameInput);
  * trigger the fucntion to send an update request to the API.
  * Refreshes form
  */
-
 async function sendUpdateName(evt) {
     evt.preventDefault();
     console.debug("sendUpdateName");
@@ -105,20 +101,28 @@ async function sendUpdateName(evt) {
  *
  * Adds a text input and a submit button to the bottom of the form
  */
-
 function showChangePasswordInput(evt) {
-    evt.preventDefault()
+    evt.preventDefault();
     console.debug("showChangePasswordInput");
-    $profileForm.append($("<div>", {id:"password-input", class:"profile-input"}))
-    $("#password-input").append($("<label>", {for:"profile-password", text:"Enter new password"})).append(
-                $("<input>", {
-                    type: "password",
-                    id: "profile-password",
-                    autocomplete: "new-password"
-                })
-            )
-            .append($("<button>", { id: "update-password", text: "Update" }));
-    $("#update-password").on("click", "button",  sendUpdatePassword);
+    $profileForm.append(
+        $("<div>", { id: "password-input", class: "profile-input" })
+    );
+    $("#password-input")
+        .append(
+            $("<label>", {
+                for: "profile-password",
+                text: "Enter new password",
+            })
+        )
+        .append(
+            $("<input>", {
+                type: "password",
+                id: "profile-password",
+                autocomplete: "new-password",
+            })
+        )
+        .append($("<button>", { id: "update-password", text: "Update" }));
+    $("#update-password").on("click", "button", sendUpdatePassword);
 }
 
 $("#change-password").on("click", showChangePasswordInput);
@@ -129,7 +133,6 @@ $("#change-password").on("click", showChangePasswordInput);
  * trigger the fucntion to send an update request to the API.
  * Erase password input elements
  */
-
 async function sendUpdatePassword(evt) {
     evt.preventDefault();
     console.debug("sendUpdatePassword");
@@ -138,35 +141,29 @@ async function sendUpdatePassword(evt) {
     $("#password-input").remove();
 }
 
-
 /**sendDeleteUser
- * 
+ *
  * Function to delete the user on the server.
  * trigger the fucntion to send an delete request to the API.
  * Logout from the active session
- * 
+ *
  */
-
-async function sendDeleteUser(evt){
-  evt.preventDefault()
-  const response = await currentUser.deleteUser()
-  if (response.username = currentUser.username){
-    logout();
-  } else{
-    console.debug("Error deleting user")
-  }
-
-
+async function sendDeleteUser(evt) {
+    evt.preventDefault();
+    const response = await currentUser.deleteUser();
+    if ((response.username = currentUser.username)) {
+        logout();
+    } else {
+        console.debug("Error deleting user");
+    }
 }
 
 $("#delete-user").on("click", sendDeleteUser);
-
 
 /** Handle click of logout button
  *
  * Remove their credentials from localStorage and refresh page
  */
-
 function logout(evt) {
     console.debug("logout", evt);
     localStorage.clear();
@@ -182,7 +179,6 @@ $navLogOut.on("click", logout);
 /** If there are user credentials in local storage, use those to log in
  * that user. This is meant to be called on page load, just once.
  */
-
 async function checkForRememberedUser() {
     console.debug("checkForRememberedUser");
     const token = localStorage.getItem("token");
@@ -217,7 +213,6 @@ function saveUserCredentialsInLocalStorage() {
  * - update nav bar options for logged-in user
  * - generate the user profile part of the page
  */
-
 function updateUIOnUserLogin() {
     console.debug("updateUIOnUserLogin");
 
@@ -230,7 +225,6 @@ function updateUIOnUserLogin() {
  * Show error on account form.
  * Error message provided as argument
  */
-
 function AccountError(err) {
     $signupForm.append($("<div>", { text: err, id: "account-error" }));
 }
@@ -239,7 +233,6 @@ function AccountError(err) {
  *
  * Toggle the favorite state of a story
  */
-
 async function setFavorite(evt) {
     console.debug("SetFavorite", evt.target.closest("li").id);
     const storyIdToFavorite = evt.target.closest("li").id;

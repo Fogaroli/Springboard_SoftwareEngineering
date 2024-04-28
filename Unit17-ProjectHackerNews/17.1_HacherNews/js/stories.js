@@ -51,7 +51,6 @@ window.addEventListener("scroll", () => {
  *
  * Returns the markup for the story.
  */
-
 function generateStoryMarkup(story) {
     // console.debug("generateStoryMarkup", story);
     let isFavorite = "";
@@ -142,7 +141,6 @@ function putMyStoriesOnPage() {
  * Function to display new story form and publish it to the API
  * Refreshes the Storylist from the server
  */
-
 async function publishNewStory(evt) {
     console.debug("publishNew Story");
     $("#story-error").remove();
@@ -174,7 +172,6 @@ $newStoryForm.on("submit", publishNewStory);
  *
  * Toggle the favorite state of a story
  */
-
 async function deleteStory(evt) {
     console.debug("DelFavorite", evt.target.closest("li").id);
     const storyIdToDelete = evt.target.closest("li").id;
@@ -206,7 +203,6 @@ function editStoryData(evt) {
     const { title, url, author } = storyList.stories.find(
         (story) => story.storyId === storyIdToEdit
     );
-    console.log(title, url, author);
     $("#edit-story-title").val(title);
     $("#edit-story-url").val(url);
     $("#edit-story-author").val(author);
@@ -222,7 +218,6 @@ $allStoriesList.on("click", ".edit", editStoryData);
  * Function to display new story form and publish it to the API
  * Refreshes the Storylist from the server
  */
-
 async function publishUpdateStory(evt) {
     console.debug("publish updated Story");
     $("#story-error").remove();

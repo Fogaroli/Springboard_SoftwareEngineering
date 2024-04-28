@@ -20,7 +20,6 @@ class Story {
 
     /** Parses hostname out of URL and returns it. */
     getHostName() {
-        // UNIMPLEMENTED: complete this function!
         const storyURL = new URL(this.url);
         return storyURL.hostname;
     }
@@ -57,12 +56,7 @@ class StoryList {
         });
         // turn plain old story objects from API into instances of Story class and returns the array
         return response.data.stories.map((story) => new Story(story));
-
-        // (removed) build an instance of our own class using the new array of stories
-        // (removed) return new StoryList(stories);
     }
-
-    static async get_more_Stories(start, qty) {}
 
     /** Adds story data to API, makes a Story instance, adds it to story list.
      * - user - the current instance of User who will post the story
@@ -185,9 +179,9 @@ class User {
     /** updateUser
      *
      * This functions sends an API PATCH request to update user information.
-     * Parameter to be updated passed as argument
+     * Parameter to be updated should be passed as argument
+     * e.g {name: <new name>, password:<new Password>}
      */
-
     async updateUser(data) {
         const response = await axios({
             url: `${BASE_URL}/users/${this.username}`,
@@ -197,12 +191,10 @@ class User {
         return { name: response.data.user.name };
     }
 
-    /** updateUser
+    /** deleteUser
      *
-     * This functions sends an API PATCH request to update user information.
-     * Parameter to be updated passed as argument
+     * This functions sends an API DELETE request to remove an user.
      */
-
     async deleteUser() {
         const response = await axios({
             url: `${BASE_URL}/users/${this.username}`,
@@ -218,7 +210,6 @@ class User {
      * - password: a new password
      * - name: the user's full name
      */
-
     static async signup(username, password, name) {
         const response = await axios({
             url: `${BASE_URL}/signup`,
@@ -258,7 +249,6 @@ class User {
    * - username: an existing user's username
    * - password: an existing user's password
    */
-
     static async login(username, password) {
         const response = await axios({
             url: `${BASE_URL}/login`,
@@ -294,7 +284,6 @@ class User {
     /** When we already have credentials (token & username) for a user,
      *   we can log them in automatically. This function does that.
      */
-
     static async loginViaStoredCredentials(token, username) {
         try {
             const response = await axios({
