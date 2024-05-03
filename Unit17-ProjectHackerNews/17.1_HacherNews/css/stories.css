@@ -61,6 +61,10 @@
     cursor: pointer;
 }
 
+.edit {
+    margin: 3px;
+}
+
 .edit:hover {
     cursor: pointer;
 }

@@ -6,8 +6,10 @@ let storyList;
 /** Get and show stories when site first loads. */
 
 async function getAndShowStoriesOnStart() {
-    // storyList = await StoryList.getStories();
-    const storyArray = await StoryList.getStories(0, 8);
+    const storyArray = await StoryList.getStories(0, 15);
+    if (!storyArray) {
+        return null;
+    }
     storyList = new StoryList(storyArray);
     $storiesLoadingMsg.remove();
 
@@ -52,18 +54,15 @@ window.addEventListener("scroll", () => {
  * Returns the markup for the story.
  */
 function generateStoryMarkup(story) {
-    // console.debug("generateStoryMarkup", story);
     let isFavorite = "";
-    let deleteIcon = "";
     let editIcon = "";
     if (currentUser) {
         isFavorite = currentUser.checkFavorite(story.storyId)
             ? '<i class="fa-solid fa-star favorite"></i>'
             : '<i class="fa-regular fa-star favorite"></i>';
         editIcon = currentUser.checkOwnStory(story.storyId)
-            ? '<i class="fa-solid fa-pencil edit"></i>'
+            ? '<i class="fa-solid fa-pencil edit"></i><i class="fa-solid fa-trash-can delete"></i>'
             : "";
-        deleteIcon = `<i class="fa-solid fa-trash-can delete"></i>`;
     }
     const hostName = story.getHostName();
     return $(`
@@ -72,7 +71,6 @@ function generateStoryMarkup(story) {
         <div class="icons">
           ${isFavorite}
           ${editIcon}
-          ${deleteIcon}
         </div>
         <div class="story-data">
         <a href="${story.url}" target="a_blank" class="story-link">
@@ -83,8 +81,8 @@ function generateStoryMarkup(story) {
         <small class="story-user">posted by ${story.username}</small>
         </div>
         </div>
+        <hr>
         </li>
-      <hr>
     `);
 }
 
@@ -173,7 +171,7 @@ $newStoryForm.on("submit", publishNewStory);
  * Toggle the favorite state of a story
  */
 async function deleteStory(evt) {
-    console.debug("DelFavorite", evt.target.closest("li").id);
+    console.debug("deleteStory", evt.target.closest("li").id);
     const storyIdToDelete = evt.target.closest("li").id;
     await StoryList.removeStory(currentUser, storyIdToDelete);
     storyList.stories = storyList.stories.filter(

@@ -53,7 +53,13 @@ class StoryList {
             url: `${BASE_URL}/stories`,
             method: "GET",
             params: { skip: start, limit: qty },
+        }).catch((err) => {
+            alert("Error connecting to server, please try again.");
+            return err;
         });
+        if (response instanceof Error) {
+            return;
+        }
         // turn plain old story objects from API into instances of Story class and returns the array
         return response.data.stories.map((story) => new Story(story));
     }
@@ -70,7 +76,13 @@ class StoryList {
             url: `${BASE_URL}/stories`,
             method: "POST",
             data: { token: user.loginToken, story: newStory },
+        }).catch((err) => {
+            alert("Error connecting to server, please try again.");
+            return err;
         });
+        if (response instanceof Error) {
+            return;
+        }
 
         const { storyId, title, author, url, username, createdAt } =
             response.data.story;
@@ -89,6 +101,9 @@ class StoryList {
             url: `${BASE_URL}/stories/${storyIdToDelete}`,
             method: "DELETE",
             data: { token: user.loginToken },
+        }).catch((err) => {
+            alert("Error connecting to server, please try again.");
+            return err;
         });
         return;
     }
@@ -107,7 +122,13 @@ class StoryList {
             url: `${BASE_URL}/stories/${storyIdToEdit}`,
             method: "PATCH",
             data: { token: user.loginToken, story: newStory },
+        }).catch((err) => {
+            alert("Error connecting to server, please try again.");
+            return err;
         });
+        if (response instanceof Error) {
+            return;
+        }
         const { storyId, title, author, url, username, createdAt } =
             response.data.story;
 
@@ -171,7 +192,13 @@ class User {
             url: `${BASE_URL}/users/${this.username}/favorites/${storyIdToToggle}`,
             method: requestType,
             data: { token: this.loginToken },
+        }).catch((err) => {
+            alert("Error connecting to server, please try again.");
+            return err;
         });
+        if (response instanceof Error) {
+            return;
+        }
         this.favorites = response.data.user.favorites.map((s) => new Story(s));
         return;
     }
@@ -187,7 +214,13 @@ class User {
             url: `${BASE_URL}/users/${this.username}`,
             method: "PATCH",
             data: { token: this.loginToken, user: data },
+        }).catch((err) => {
+            alert("Error connecting to server, please try again.");
+            return err;
         });
+        if (response instanceof Error) {
+            return;
+        }
         return { name: response.data.user.name };
     }
 
@@ -200,7 +233,13 @@ class User {
             url: `${BASE_URL}/users/${this.username}`,
             method: "DELETE",
             data: { token: this.loginToken },
+        }).catch((err) => {
+            alert("Error connecting to server, please try again.");
+            return err;
         });
+        if (response instanceof Error) {
+            return;
+        }
         return { username: response.data.user.username };
     }
 
@@ -305,7 +344,7 @@ class User {
                 token
             );
         } catch (err) {
-            console.error("loginViaStoredCredentials failed", err);
+            // console.error("loginViaStoredCredentials failed", err);
             return null;
         }
     }
