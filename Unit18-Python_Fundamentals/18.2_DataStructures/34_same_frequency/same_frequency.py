@@ -10,3 +10,13 @@ def same_frequency(num1, num2):
         >>> same_frequency(1212, 2211)
         True
     """
+    def map(string):
+        dict = {}
+        for digit in string:
+            if digit in dict.keys():
+                dict[digit] +=1
+            else:
+                dict[digit] = 1
+        return dict
+    
+    return map(str(num1)) == map(str(num2))

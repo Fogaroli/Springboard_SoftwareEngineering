@@ -11,3 +11,11 @@ def mode(nums):
         >>> mode([2, 2, 3, 3, 2])
         2
     """
+    number_set = {num for num in nums}
+    count = 0
+    number = ""
+    for num in number_set:
+        if nums.count(num) > count:
+            count = nums.count(num)
+            number = num
+    return number

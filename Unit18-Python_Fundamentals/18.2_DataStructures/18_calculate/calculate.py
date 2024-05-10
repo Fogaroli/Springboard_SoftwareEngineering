@@ -26,3 +26,16 @@ def calculate(operation, a, b, make_int=False, message='The result is'):
         >>> calculate('foo', 2, 3)
         
     """
+    operators = {
+        "add" : a + b,
+        "subtract" : a - b,
+        "multiply" : a * b,
+        "divide" : a / b,
+    }
+    
+    if operation not in operators.keys():
+        return None
+    result = operators[operation]
+    if make_int:
+        result = round(result)
+    return f"{message} {result}"

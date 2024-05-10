@@ -19,3 +19,8 @@ def read_file_list(filename):
     # hint: when you read lines of files, there will be a "newline"
     # (end-of-line character) at the end of each line, and you want to
     # strip that off before you print it. Do some research on that!
+    with open(f'./{filename}', "r") as file:
+        file_data = file.read()
+        each_line = file_data.split("\n")
+        for line in each_line:
+            print("- " + line)
