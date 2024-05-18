@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %} Madlibs {% endblock %} {% block body
+%}
+
+<p class="display-1 title">Madlibs</p>
+<form id="story-form" action="/story">
+    <input type="hidden" value="{{id}}" name="id" />
+    {% for word in words %}
+    <div class="form-group row">
+        <label for="{{word}}" class="col-2 col-form-label">{{word}}: </label>
+        <div class="col-4 m-2">
+            <input
+                type="text"
+                id="{{word}}"
+                class="form-control"
+                name="{{word}}" />
+        </div>
+    </div>
+    {% endfor %}
+    <button id="submit-story" class="btn btn-dark">Submit</button>
+</form>
+
+{% endblock %}

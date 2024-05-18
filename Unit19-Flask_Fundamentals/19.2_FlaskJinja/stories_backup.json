@@ -1,0 +1,10 @@
+{
+    "1": {
+        "words": ["place", "noun", "verb", "adjective", "plural_noun"],
+        "text": "Once upon a time in a long-ago {place}, there lived a large {adjective} {noun}. It loved to {verb} {plural_noun}."
+    },
+    "2": {
+        "words": ["place", "noun", "verb", "plural_noun"],
+        "text": "On a far away {place}, there lived a {noun}. It loved to {verb} {plural_noun}."
+    }
+}

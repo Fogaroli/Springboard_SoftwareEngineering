@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% block title %} Madlibs {% endblock %} {% block body
+%}
+
+<p class="display-1 title">Madlibs</p>
+<p class="display-3">Add a new story to Madlibs</p>
+<form id="story-form" action="/add">
+    <div>
+        <label for="words">Enter the list of words: </label>
+        <input type="text" id="words" class="form-control" name="words" />
+        <small class="form-text text-muted"
+            >separate words with comma: place, noun, ...</small
+        >
+    </div>
+    <div>
+        <label for="text">Enter the text template: </label>
+        <input type="text" id="words" class="form-control" name="text" />
+        <small class="form-text text-muted"
+            >Use the format: Once upon a time in {place}, a {noun} ...</small
+        ><br />
+        <small class="form-text text-muted"
+            >Remember to use all words listed in the list of words above.</small
+        >
+    </div>
+    <div>
+        <button type="submit" id="submit-story" class="btn btn-dark">
+            Submit
+        </button>
+    </div>
+</form>
+
+{% endblock %}
