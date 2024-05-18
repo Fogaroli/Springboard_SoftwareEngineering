@@ -6,17 +6,16 @@ Date: May 17, 2024
 
 //Global variables
 
+const $selectStoryForm = $("#select_story");
+const $nextButton = $("#story-selection-next");
+const $storyForm = $("#story-form");
+const $submitStoryButton = $("#submit-story");
+
 //================================================================
 //Feature Functions
 
 //================================================================
 //DOM Manupulation Functions
-
-const $selectStoryForm = $("#select_story");
-const $nextButton = $("#story-selection-next");
-
-const $storyForm = $("#story-form");
-const $submitStoryButton = $("#submit-story");
 
 $nextButton.on("click", function (evt) {
     evt.preventDefault();
