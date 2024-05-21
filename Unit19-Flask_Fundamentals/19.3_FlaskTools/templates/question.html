@@ -13,6 +13,7 @@
 <p>{{text}}</p>
 <form action="/answer" method="post">
     <input type="hidden" name="question" value="{{question}}" />
+    <input type="hidden" name="survey_code" value="{{survey_code}}" />
     {% for choice in choices %}
     <div class="form-check">
         <input
@@ -23,7 +24,13 @@
             value="{{choice}}" />
         <label class="form-check-label" for="{{choice}}"> {{choice}} </label>
     </div>
-    {% endfor %}
+    {% endfor %} {% if allow_text %}
+    <input
+        class="form-control"
+        type="text"
+        placeholder="Enter comments if any"
+        name="text_answer" />
+    {% endif %}
     <button type="submit" class="btn btn-secondary col-12">Submit</button>
 </form>
 {% endblock %}
