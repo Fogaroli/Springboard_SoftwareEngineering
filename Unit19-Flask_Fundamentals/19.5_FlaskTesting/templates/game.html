@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %} Boggle Game {% endblock %} {% block
+main %}
+
+<session id="notifications"> </session>
+
+<h1>Welcome to Boogle Game</h1>
+<p>
+    Find a word hidden in the board below, you can step into any direction, but
+    never back.
+</p>
+
+<section id="timerBlock">
+    <div id="timer">You have <span>60</span>s left</div>
+</section>
+
+<session id="board" class="container">
+    {% for row in board %}
+    <div class="board-row row">
+        {% for letter in row %}
+        <div class="letter col">{{letter}}</div>
+        {% endfor %}
+    </div>
+    {% endfor %}
+</session>
+<session id="scoreBoard">
+    <div id="currentScore">Current score is <span>0</span> points</div>
+    <div>
+        Your stored record is <span id="record">{{record}}</span> points <br />
+        You played this game <span id="playedtimes">{{playedtimes}}</span> times
+    </div>
+</session>
+<session>
+    <form id="send-word">
+        <label for="word-input">Found a word? Enter it here</label>
+        <input id="word-input" name="word-input" type="text" />
+        <button type="submit">Submit</button>
+    </form>
+</session>
+<script src="/static/app.js"></script>
+{% endblock %}
