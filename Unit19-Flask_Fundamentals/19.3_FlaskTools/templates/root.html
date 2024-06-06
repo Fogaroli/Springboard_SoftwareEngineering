@@ -1,0 +1,23 @@
+{% extends 'base.html' %} {% block title %}Incredible Surveys{% endblock %} {%
+block body %}
+
+<h1 class="h1">Quizes and Surveys</h1>
+<p>Select one of the items below and lets dive in.</p>
+<form action="/survey" method="get">
+    {% if surveys|length > 0 %} {% for key in surveys.keys() %}
+    <div class="form-check">
+        <input
+            class="form-check-input"
+            type="radio"
+            id="{{key}}"
+            name="survey"
+            value="{{key}}" />
+        <label class="form-check-label" for="{{key}}"> {{surveys[key]}} </label>
+    </div>
+    {% endfor %} {% else %}
+    <p>Ops, sorry, there are no surveys available</p>
+    {% endif %}
+    <button class="btn btn-secondary col-12" type="submit">Lets Start</button>
+</form>
+
+{% endblock %}

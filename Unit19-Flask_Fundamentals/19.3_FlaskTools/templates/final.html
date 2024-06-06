@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block title %}Survey{% endblock %} {% block body %}
+
+<h1 class="h1">Thank you</h1>
+<p>Thank you for participating, please review your answers below:</p>
+
+{% if responses|length > 0 %}
+<ol>
+    {% for item in responses.keys() %}
+
+    <li>
+        <strong>{{survey.questions[item|int].question}}</strong>
+        {{responses[item]["answer"]}} - {{responses[item]["text"]}}
+    </li>
+
+    {% endfor %}
+</ol>
+{% else %}
+<p>No answers saved</p>
+
+{% endif %} {% endblock %}
