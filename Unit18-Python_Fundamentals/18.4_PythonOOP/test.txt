@@ -1,0 +1,15 @@
+
+# Veggies
+kale
+parsnips
+tomato
+
+
+# Fruits
+apple
+mango
+
+
+
+#Salada
+lettuce
