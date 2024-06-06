@@ -1,0 +1,22 @@
+#ratingInput{
+    width: 40px;
+}
+
+.moviesRecorded {
+    padding: 50px;
+
+}
+
+.movieTable{
+    border: 1px solid black;
+    text-align: center;
+}
+
+th{
+    width: 100px;
+    background-color: lightgray;
+}
+
+td, tr{
+    border:1px solid black;
+}
