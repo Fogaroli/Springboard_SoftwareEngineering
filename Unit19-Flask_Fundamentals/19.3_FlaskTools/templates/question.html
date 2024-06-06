@@ -1,0 +1,29 @@
+{% extends 'base.html' %} {% block title %}Survey{% endblock %} {% block body %}
+{% with messages = get_flashed_messages() %} {% if messages %}
+<section class="messages">
+    {% for msg in messages %}
+    <p>{{msg}}</p>
+    {% endfor %}
+</section>
+
+{% endif %} {% endwith %}
+
+<h1 class="h1">{{title}}</h1>
+<h2 class="h2">Question {{question + 1}}</h2>
+<p>{{text}}</p>
+<form action="/answer" method="post">
+    <input type="hidden" name="question" value="{{question}}" />
+    {% for choice in choices %}
+    <div class="form-check">
+        <input
+            class="form-check-input"
+            type="radio"
+            id="{{choice}}"
+            name="answer"
+            value="{{choice}}" />
+        <label class="form-check-label" for="{{choice}}"> {{choice}} </label>
+    </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-secondary col-12">Submit</button>
+</form>
+{% endblock %}
