@@ -1,0 +1,19 @@
+{% extends 'base.html' %} {% block title %} Madlibs {% endblock %} {%
+block body %}
+
+<p class="display-1 title">Welcome to Madlibs</h1>
+<p>Select one of the story templates below and click Next</p>
+<form id="select_story" action="/form">
+    <select class="form-control form-control-sm" id="story_id_selection">
+        <option value = "0">Select ...</option>
+        {% for (option, text) in templates %}
+        <option value = {{option}} > {{text}}</option>
+        {% endfor %}
+    </select>
+    <div class="m-2">
+        <button class="btn btn-dark" id="story-selection-next">Next</button>
+        <a href="/new" class="btn btn-dark">Add Story</a>
+    </div>
+</form>
+
+{% endblock %}
