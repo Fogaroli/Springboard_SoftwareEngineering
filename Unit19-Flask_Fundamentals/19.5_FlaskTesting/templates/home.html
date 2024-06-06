@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block title %} Boggle Game {% endblock %} {% block
+main %}
+
+<h1>Welcome to Boogle Game</h1>
+<p>
+    On this game you need to find a word in the board, you can step into any
+    direction, but never back to the previous letter.
+</p>
+<p>
+    <strong>First</strong> please select the size of the board you would like to
+    play with, the smaller the board the more challenging it is.
+</p>
+
+<form id="size" action="/game">
+    <label for="columns">Select number of columns</label>
+    <input id="columns" name="columns" type="number" min="3" max="8" value="5" />
+    <label for="lines">Select number of lines</label>
+    <input id="lines" name="lines" type="number" min="3" max="8" value="5"/>
+    <button type="submit">Lets GO!</button>
+</form>
+
+{% endblock %}

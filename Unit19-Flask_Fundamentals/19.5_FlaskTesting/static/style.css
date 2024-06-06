@@ -1,0 +1,69 @@
+h1 {
+    color: darkgreen;
+    text-align: center;
+}
+
+body {
+    background-color: lightyellow;
+}
+
+p {
+    text-align: center;
+}
+
+.board-row {
+    justify-content: center;
+    align-content: center;
+    column-gap: 5pt;
+    row-gap: 5pt;
+    margin: 5pt;
+}
+
+.letter {
+    background-color: orange;
+    text-align: center;
+}
+
+session {
+    margin: 30pt;
+}
+
+.close {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#timerBlock {
+    align-items: center;
+}
+
+#notifications {
+    display: block;
+    position: fixed;
+    align-items: start;
+    vertical-align: top;
+    right: 20px;
+    left: 20px;
+}
+
+.dialog {
+    display: block;
+    position: relative;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    text-align: center;
+    margin: 10px;
+}
+
+#scoreBoard {
+    display: flex;
+    justify-content: space-between;
+}
+
+#timerBlock {
+    text-align: center;
+    font-weight: bold;
+}
