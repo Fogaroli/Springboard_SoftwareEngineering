@@ -48,8 +48,13 @@ SELECT category, count(*) FROM analytics GROUP BY category HAVING count(*) > 300
 SELECT app_name, reviews, min_installs, min_installs/reviews AS proportion FROM analytics WHERE min_installs >= 100000 ORDER BY proportion desc;
 
 -- FS1
+SELECT category, app_name, rating FROM analytics WHERE (category,rating) in (SELECT category, MAX(rating) FROM analytics WHERE min_installs >= 50000 GROUP BY category);
 
 -- FS2
 SELECT app_name FROM analytics WHERE app_name ILIKE '%facebook%';
 
 -- FS3
+ SELECT app_name, genres FROM analytics WHERE array_length(genres,1) >= 2;
+ 
+-- FS4
+SELECT app_name, genres FROM analytics WHERE genres @> '{"Education"}';
