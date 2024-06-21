@@ -1,0 +1,15 @@
+erdiagram Model
+
+notation=crowsfoot
+entity A {
+   id key,
+   first_name TEXT.
+}
+
+entity B {
+   id key
+}
+
+relationship Rel {
+   A -> B
+}
